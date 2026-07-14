@@ -1,0 +1,26 @@
+.Button {
+    border: none;
+    outline: none;
+
+    background-color: #F5E0E8;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.Button:hover {
+    background-color: #eadbdd;
+}
+
+.Button:active {
+    background-color: #e4d0d3;
+}
+
+.Button_LOGIN {
+    width: 100%;
+    height: 50px;
+}

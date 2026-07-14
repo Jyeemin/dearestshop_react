@@ -1,0 +1,59 @@
+.account-container{
+    width:500px;
+    margin:100px auto;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.account-title{
+    text-align:center;
+    font-size:18px;
+    font-weight:500;
+
+    margin-bottom:50px;
+}
+
+.account-input{
+    width:100%;
+    height:58px;
+
+    margin-bottom:12px;
+    padding:0 16px;
+
+    border:1px solid #e8e8e8;
+    outline:none;
+
+    font-size:15px;
+}
+
+.account-input::placeholder{
+    color:#999;
+}
+
+.account-input:focus{
+    border-color:#d9c8ce;
+}
+
+.account-button{
+    width:100%;
+    height:60px;
+
+    margin-top:20px;
+}
+
+.login-link{
+    display:block;
+    width:100%;
+
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#999;
+    text-decoration:underline;
+}
+
+.login-link:hover{
+    color:#666;
+}
