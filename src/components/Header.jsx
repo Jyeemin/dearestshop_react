@@ -28,6 +28,8 @@ const Header = () => {
     <ul className="navbar-nav ml-auto">
 
          <li className="nav-item active"><Link className="nav-link" to="/">HOME</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/new">NEW ARRIVALS</Link></li>
+           <li className="nav-item"><Link className="nav-link" to="/best">BEST THINGS</Link></li>
 
          <li className="nav-item dropdown">
            <Link className="nav-link" to="/shop">SHOP ALL</Link>
@@ -37,7 +39,7 @@ const Header = () => {
                         <li><Link className="dropdown-item" to="/shop/dresses">DRESSES</Link></li>
                      </ul>
          </li>
-                        <li className="nav-item"><Link className="nav-link" to="/best">BEST</Link></li>
+                       
                         <li className="nav-item"><Link className="nav-link" to="/contact">CONTACT</Link></li>
                     </ul>
             </nav>

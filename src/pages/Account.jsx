@@ -1,9 +1,11 @@
 import Button from "../components/Button";
 import { useState } from "react";
-import {Link} from "react-router-dom";
+import axios from "axios";
+import {Link, useNavigate} from "react-router-dom";
 import "./Account.css";
 
 const Account = () => {
+const navigate = useNavigate();
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
@@ -12,30 +14,39 @@ const [phoneNumber, setPhoneNumber] = useState("");
 
 
     const signup = async () => {
-        if(password !== passwordConfirm){
-            alert("비밀번호가 일치하지 않습니다.");
-            return;
+    try{
+                // Spring으로 회원가입 요청
+        const response = await axios.post(
+            "http://localhost:8080/api/members/join", 
+        {
+            name,
+            email,
+            password,
+            passwordConfirm,
+            phoneNumber
         }
+    );
+    console.log(response);
+    alert(response.data.message);
+    navigate("/login");
 
-        // Spring으로 회원가입 요청
-        const response = await fetch("http://localhost:8080/api/members", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                password
-            })
-        });
+    }catch(error){
+        //alert(error.response.data.message);
+       if(error.response){
+        alert(error.response.data.message);
+    }else{
+        alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+    } 
+    }
 
-        if (response.ok) {
-            alert("회원가입 성공!");
-        } else {
-            alert("회원가입 실패");
-        }
+
+
+  
+
+
+
     };
+
 
 
 
