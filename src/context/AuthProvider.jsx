@@ -1,6 +1,5 @@
-import { createContext, useState } from "react";
-
-export const AuthContext = createContext();
+import { useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
 
@@ -8,11 +7,15 @@ const AuthProvider = ({ children }) => {
         !!localStorage.getItem("accesstoken")
     );
 
+    const [member, setMember] = useState(null);
+
     return (
         <AuthContext.Provider
             value={{
                 isLogin,
-                setIsLogin
+                setIsLogin,
+                member,
+                setMember
             }}
         >
             {children}

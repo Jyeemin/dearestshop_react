@@ -1,12 +1,14 @@
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import "./Login.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { setIsLogin } = useContext(AuthContext);
 
     
 
@@ -23,8 +25,12 @@ const Login = () => {
     );
     console.log(response);
     alert(response.data.message);
-    const token = response.data.token;
+    const token = response.data.data.token;
     localStorage.setItem("accesstoken", token);
+    console.log(response.data);
+    console.log(response.data.data);
+    console.log(response.data.data.token);
+    setIsLogin(true);
     window.location.href = "/"; // 로그인 성공 후 홈으로 이동
 
     }catch(error){
@@ -54,6 +60,11 @@ const Login = () => {
                 placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        login();
+                    }   
+                }}
             />
 
             <p className="forgot-password">
@@ -66,8 +77,8 @@ const Login = () => {
                 className="login-button"
                 text="sign in"
                 onClick={login}
-                >
-                </Button>
+            >
+            </Button>
 
                 <Link to="/account"  className="create-account">
                 create an account

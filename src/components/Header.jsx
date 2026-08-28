@@ -7,13 +7,15 @@ import {
     FiShoppingBag,
     FiX
 } from "react-icons/fi";
-import { useRef } from "react";
+import { useRef,useContext } from "react";
+import {AuthContext} from "../context/AuthContext";
 import {useNavigate, Link} from "react-router-dom";
 
 
 const Header = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const inputRef = useRef(null);
+    const {isLogin} = useContext(AuthContext);
     const nav = useNavigate();
 
     return (
@@ -32,7 +34,7 @@ const Header = () => {
            <li className="nav-item"><Link className="nav-link" to="/best">BEST THINGS</Link></li>
 
          <li className="nav-item dropdown">
-           <Link className="nav-link" to="/shop">SHOP ALL</Link>
+           <Link className="nav-link" to="/Products">SHOP ALL</Link>
                    <ul className="dropdown-menu">
                         <li><Link className="dropdown-item" to="/shop/tops">TOPS</Link></li>
                         <li><Link className="dropdown-item" to="/shop/bottoms">BOTTOMS</Link></li>
@@ -63,7 +65,7 @@ const Header = () => {
            
 <div className="icons">
     <FiSearch onClick={() => setIsSearchOpen(!isSearchOpen)} />
-    <FiUser onClick={() => nav('/login')} />
+    <FiUser onClick={() => nav(isLogin ? "/mypage" : "/login")}/>
     <FiHeart onClick={() => nav('/wishlist')} />
     <FiShoppingBag onClick={() => nav('/cart')} />
 </div>

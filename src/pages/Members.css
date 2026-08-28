@@ -1,0 +1,199 @@
+.members-page {
+    width: 90%;
+    max-width: 1200px;
+    margin: 80px auto 120px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.members-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding-bottom: 28px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.members-small-title {
+    margin: 0 0 10px;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #d8aebc;
+}
+
+.members-header h1 {
+    margin: 0;
+
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.members-description {
+    margin: 12px 0 0;
+
+    font-size: 13px;
+    color: #999;
+}
+
+.member-count {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #999;
+}
+
+.member-count strong {
+    margin-left: 8px;
+
+    color: #222;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.members-table-wrap {
+    margin-top: 30px;
+
+    border-top: 1px solid #222;
+}
+
+.members-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+
+/* 테이블 제목 */
+
+.members-table thead th {
+    height: 55px;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    color: #777;
+
+    text-align: left;
+}
+
+.members-table thead th:first-child {
+    width: 80px;
+
+    text-align: center;
+}
+
+
+/* 회원 한 줄 */
+
+.members-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.members-table tbody tr:hover {
+    background-color: #fcf6f8;
+}
+
+.members-table tbody td {
+    height: 70px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    color: #555;
+}
+
+
+/* 번호 */
+
+.member-number {
+    text-align: center;
+
+    color: #aaa !important;
+    font-size: 12px;
+}
+
+
+/* 이름 */
+
+.member-name {
+    color: #222 !important;
+    font-weight: 400;
+}
+
+
+/* =========================
+   ROLE
+========================= */
+
+.role-badge {
+    display: inline-block;
+
+    min-width: 55px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    text-align: center;
+}
+
+
+/* 일반 회원 */
+
+.role-badge.user {
+    background-color: #f5f5f5;
+    color: #888;
+}
+
+
+/* 관리자 */
+
+.role-badge.admin {
+    background-color: #f7e6eb;
+    color: #c58b9c;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .members-page {
+        width: 92%;
+        margin-top: 50px;
+    }
+
+    .members-header {
+        align-items: flex-start;
+    }
+
+    .member-count {
+        margin-top: 10px;
+    }
+
+    .members-table-wrap {
+        overflow-x: auto;
+    }
+
+    .members-table {
+        min-width: 700px;
+    }
+}
