@@ -73,3 +73,17 @@
 .pagination button.active {
     font-weight: bold;
 }
+
+
+.product-guide {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.product-guide div {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+}

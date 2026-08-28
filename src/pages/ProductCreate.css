@@ -342,3 +342,37 @@
   }
 
 }
+
+
+.product-size {
+    margin-top: -30px;
+    margin-bottom: 10px;
+}
+
+.product-size label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.size-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.size-buttons button {
+    width: 60px;
+    height: 40px;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.size-buttons button.selected {
+    background: #f4e6e9;
+
+    color: white;
+    border-color: #f4e6e9;
+
+}

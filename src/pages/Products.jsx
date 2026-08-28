@@ -108,7 +108,7 @@ const Products = () => {
 
 
                         {/* 상품 사진 */}
-                        <Link to={`/products/${product.productid}`}>
+                        <Link to={`/products/${product.productId}`}>
                         <img
                             className="product-image"
                             src={`http://localhost:8080${product.thumbnail}`}

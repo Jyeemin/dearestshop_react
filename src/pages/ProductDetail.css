@@ -1,122 +1,175 @@
-/* =========================
-   상품 상세 전체
-========================= */
+/* =================================
+   전체 상세페이지
+================================= */
 
 .product-detail {
     width: 100%;
+
     display: flex;
-    gap: 30px;
+
+    gap: 50px;
+
     padding: 30px 4%;
+
     box-sizing: border-box;
+
     background-color: #fff;
 }
 
 
-/* =========================
+/* =================================
    왼쪽 상품 이미지
-========================= */
+================================= */
 
 .product-detail-image {
+
     width: 58%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
     flex-shrink: 0;
 }
 
+
 .product-detail-image img {
+
     width: 100%;
+
     display: block;
+
     object-fit: cover;
 }
 
 
-/* =========================
+
+/* =================================
    오른쪽 상품 정보
-========================= */
+================================= */
 
 .product-detail-info {
+
     width: 42%;
+
     padding: 0 2%;
+
     box-sizing: border-box;
 
-    position: relative;
+    position: sticky;
+
+    top: 100px;
+
+    height: fit-content;
 }
 
 
-/* =========================
-   상품명 + 찜
-========================= */
+
+/* =================================
+   상품명 + 하트
+================================= */
 
 .product-detail-title {
+
     width: 100%;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: flex-start;
 
     margin-bottom: 12px;
 }
 
+
 .product-detail-title h1 {
+
     margin: 0;
 
     font-size: 15px;
+
     font-weight: 400;
+
     line-height: 1.5;
 
     color: #222;
 }
 
 
-/* 하트 버튼 */
+
+/* =================================
+   하트
+================================= */
 
 .detail-wishlist {
+
     border: none;
+
     background: transparent;
 
     padding: 0;
+
     margin: 0;
 
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
+
 .detail-wishlist svg {
+
     width: 22px;
+
     height: 22px;
 
     stroke-width: 1.3;
 }
 
 
-/* =========================
+
+/* =================================
    가격
-========================= */
+================================= */
 
 .detail-price {
+
     margin: 0;
 
     font-size: 15px;
+
     font-weight: 400;
 
     color: #222;
 }
 
 
-/* =========================
+
+/* =================================
    상품 설명
-========================= */
+================================= */
 
 .detail-description {
+
     margin-top: 70px;
+
     margin-bottom: 55px;
 }
 
+
 .detail-description p {
+
     margin: 0;
 
     font-size: 13px;
+
     line-height: 2;
 
     color: #333;
@@ -125,103 +178,224 @@
 }
 
 
-/* =========================
-   옵션 전체
-========================= */
+
+/* =================================
+   옵션
+================================= */
 
 .detail-option {
+
     margin-bottom: 35px;
 }
 
-.detail-option > p {
+
+.option-title {
+
     margin: 0 0 12px 0;
 
     font-size: 13px;
+
     font-weight: 400;
 
     color: #222;
 }
 
 
-/* =========================
-   색상 옵션
-========================= */
 
-.color-options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.color-options button {
-    width: fit-content;
-
-    padding: 0;
-
-    border: none;
-    background: transparent;
-
-    font-size: 13px;
-    color: #333;
-
-    cursor: pointer;
-}
-
-
-/* 선택된 색상 */
-
-.color-options button:hover {
-    color: #d9b8bc;
-}
-
-
-/* =========================
-   사이즈 옵션
-========================= */
+/* =================================
+   사이즈
+================================= */
 
 .size-options {
+
     display: flex;
+
     gap: 10px;
 }
 
+
 .size-options button {
+
     width: 48px;
+
     height: 32px;
 
     border: 1px solid #ddd;
+
     background-color: #fff;
 
     font-size: 13px;
+
     color: #333;
 
     cursor: pointer;
 }
 
 
-/* 사이즈 선택/hover */
+/* 마우스를 올렸을 때 */
 
 .size-options button:hover {
+
     border-color: #c9aeb2;
+
     background-color: #f8eeee;
 }
 
 
-/* =========================
-   장바구니 버튼
-========================= */
+/* 선택된 사이즈 */
+
+.size-options button.selected {
+
+    border-color: #c9aeb2;
+
+    background-color: #f8eeee;
+
+    color: #222;
+}
+
+
+
+/* =================================
+   수량
+================================= */
+
+.quantity-option {
+
+    margin-bottom: 8px;
+}
+
+
+.quantity-box {
+
+    display: flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    height: 32px;
+}
+
+
+.quantity-box button {
+
+    width: 32px;
+
+    height: 32px;
+
+    border: 1px solid #ddd;
+
+    background-color: #fff;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+.quantity-box button:hover {
+
+    background-color: #f8eeee;
+}
+
+
+.quantity-box span {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 13px;
+
+    border-top: 1px solid #ddd;
+
+    border-bottom: 1px solid #ddd;
+
+    box-sizing: border-box;
+}
+
+
+
+/* =================================
+   총 가격
+================================= */
+
+.total-price {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 8px;
+
+    margin-bottom: 25px;
+}
+
+
+.total-price span {
+
+    font-size: 13px;
+
+    color: #333;
+}
+
+
+.total-price strong {
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color: #222;
+}
+
+
+
+/* =================================
+   버튼 전체
+================================= */
+
+.detail-buttons {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+}
+
+
+
+/* =================================
+   장바구니
+================================= */
 
 .add-cart-button {
-    width: 100%;
-    height: 56px;
 
-    margin-top: 25px;
+    width: 100%;
+
+    height: 56px;
 
     border: none;
 
     background-color: #f4e5e7;
+
     color: #222;
 
     font-size: 13px;
+
     font-weight: 400;
 
     cursor: pointer;
@@ -229,50 +403,146 @@
     transition: background-color 0.2s ease;
 }
 
+
 .add-cart-button:hover {
+
     background-color: #ead5d8;
 }
 
 
-/* =========================
+
+/* =================================
+   바로 구매
+================================= */
+
+.buy-button {
+
+    width: 100%;
+
+    height: 56px;
+
+    border: 1px solid #ddd;
+
+    background-color: #fff;
+
+    color: #222;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+}
+
+
+.buy-button:hover {
+
+    background-color: #fafafa;
+}
+
+
+
+/* =================================
+   상품 안내
+================================= */
+
+.product-guide {
+
+    width: 100%;
+
+    margin-top: 40px;
+
+    border-top: 1px solid #ddd;
+}
+
+
+.guide-item {
+
+    height: 56px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid #ddd;
+
+    font-size: 12px;
+
+    color: #333;
+
+    cursor: pointer;
+}
+
+
+.guide-item span:last-child {
+
+    font-size: 15px;
+}
+
+
+
+/* =================================
    로딩
-========================= */
+================================= */
 
 .product-detail-loading {
+
     width: 100%;
+
     min-height: 500px;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     font-size: 14px;
+
     color: #777;
 }
 
 
-/* =========================
+
+/* =================================
    반응형
-========================= */
+================================= */
 
 @media (max-width: 900px) {
 
     .product-detail {
+
         flex-direction: column;
+
         padding: 20px;
     }
 
+
     .product-detail-image {
+
         width: 100%;
     }
+
 
     .product-detail-info {
+
         width: 100%;
+
         padding: 20px 0 40px;
+
+        position: static;
     }
 
+
     .detail-description {
+
         margin-top: 40px;
+
         margin-bottom: 40px;
     }
+
 }

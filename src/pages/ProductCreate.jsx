@@ -11,6 +11,7 @@ const ProductCreate = () => {
   const [price, setPrice] = useState("");
   const [stockQuantity, setStockQuantity] = useState("");
   const [categoryId, setCategoryId] = useState("");
+  const [sizes, setSizes] = useState("");
 
   // -----------------------------
   // 이미지 파일
@@ -106,6 +107,11 @@ const ProductCreate = () => {
       return;
     }
 
+    if(!sizes){
+        alert("사이즈를 선택해주세요.");
+        return;
+    }
+
     // -----------------------------------------
     // 1. ProductCreateDto에 들어갈 데이터
     // -----------------------------------------
@@ -114,6 +120,7 @@ const ProductCreate = () => {
       detailDescription: detailDescription,
       price: Number(price),
       stockQuantity: Number(stockQuantity),
+      sizes:sizes,
       categoryId: Number(categoryId),
     };
 
@@ -188,6 +195,7 @@ const ProductCreate = () => {
       setDetailDescription("");
       setPrice("");
       setStockQuantity("");
+      setSizes("");
       setCategoryId("");
       setImages([]);
       setThumbnailIndex(0);
@@ -305,6 +313,62 @@ const ProductCreate = () => {
             </div>
 
           </section>
+
+          <div className="product-size">
+
+            
+
+    <label>SIZE</label>
+
+    <div className="size-buttons">
+
+        <button
+            type="button"
+            className={sizes.includes("S") ? "selected" : ""}
+            onClick={() => {
+                if (sizes.includes("S")) {
+                    setSizes(sizes.filter((size) => size !== "S"));
+                } else {
+                    setSizes([...sizes, "S"]);
+                }
+            }}
+        >
+            S
+        </button>
+
+
+        <button
+            type="button"
+            className={sizes.includes("M") ? "selected" : ""}
+            onClick={() => {
+                if (sizes.includes("M")) {
+                    setSizes(sizes.filter((size) => size !== "M"));
+                } else {
+                    setSizes([...sizes, "M"]);
+                }
+            }}
+        >
+            M
+        </button>
+
+
+        <button
+            type="button"
+            className={sizes.includes("L") ? "selected" : ""}
+            onClick={() => {
+                if (sizes.includes("L")) {
+                    setSizes(sizes.filter((size) => size !== "L"));
+                } else {
+                    setSizes([...sizes, "L"]);
+                }
+            }}
+        >
+            L
+        </button>
+
+    </div>
+
+</div>
 
 
           {/* =========================
