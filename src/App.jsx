@@ -12,6 +12,7 @@ import Members from "./pages/Members";
 import ProductCreate from "./pages/ProductCreate";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
 
 
 
@@ -33,6 +34,9 @@ function App() {
       <Route path="/admin/product/new" element={<ProductCreate/>}/>
       <Route path="/products" element={<Products/>}/>
       <Route path="/products/:id" element={<ProductDetail/>}/>
+      <Route path="/cart" element={<Cart />}
+      
+/>
 
       </Routes>
 
