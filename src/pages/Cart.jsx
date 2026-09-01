@@ -121,6 +121,55 @@ const Cart = () => {
 
     }
 
+    //상품 변경 함수
+    const updateQuantity = async (cartItemId, quantity) => {
+
+        try{
+            await api.patch(
+                `http://localhost:8080/api/products/cart/${cartItemId}`,
+                JSON.stringify(quantity),
+                 {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+            );
+
+                   setCartItems((prevItems) =>
+                    prevItems.map((item) =>
+                    item.cartItemId === cartItemId
+                    ? {
+                        ...item,
+                        quantity:quantity
+                    } : item)
+        );
+
+        }catch(error){
+            console.error("수량 변경 실패" + error);
+        }
+
+ 
+    }
+
+    //상품 삭제 함수
+
+    const deleteCartItem = async (cartItemId) => {
+        try{
+            await api.delete(
+                `http://localhost:8080/api/products/cart/${cartItemId}`
+            );
+
+            setCartItems((prevItems) =>
+                prevItems.filter(
+                    (item) => item.cartItemId !== cartItemId)
+                );
+                console.log("장바구니 상품 삭제 성공");
+        }catch(error){
+            console.error("상품 삭제 실패" + error);
+        }
+        
+    }
+
 
     // ================================
     // 장바구니 화면
@@ -228,7 +277,12 @@ const Cart = () => {
 
                             <div className="cart-item-quantity">
 
-                                <button>
+                                <button
+                                onClick={() => {
+                                    if(item.quantity > 1){
+                                        updateQuantity(item.cartItemId, item.quantity - 1);
+                                    }
+                                }}>
                                     -
                                 </button>
 
@@ -236,7 +290,8 @@ const Cart = () => {
                                     {item.quantity}
                                 </span>
 
-                                <button>
+                                <button
+                                onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}>
                                     +
                                 </button>
 
@@ -250,6 +305,11 @@ const Cart = () => {
                             <div className="cart-item-total">
 
                                 ₩{getItemPrice(item).toLocaleString()}
+                                <button
+                                className="delete-cart-button"
+                                onClick={() => deleteCartItem(item.cartItemId)}>
+                                    x
+                                </button>
 
                             </div>
 

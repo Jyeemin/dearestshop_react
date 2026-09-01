@@ -512,4 +512,33 @@
         width: 100%;
     }
 
+
+}
+
+
+    /* =================================
+   장바구니 상품 삭제
+================================= */
+
+.delete-cart-button {
+
+    margin-left: 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #999;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    padding: 0;
+}
+
+
+.delete-cart-button:hover {
+
+    color: #222;
 }
