@@ -134,3 +134,17 @@
 .icons svg:hover {
     color: #f5c1e0;
 }
+
+.header-wishlist {
+    color: #111;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-wishlist svg {
+    width: 21px;
+    height: 21px;
+}

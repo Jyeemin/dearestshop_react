@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState, useContext } from "react";
 import { FiHeart, FiShoppingBag } from "react-icons/fi";
 import "./Products.css";
 import { Link } from "react-router-dom";
+import api from "../axios/api";
+import { AuthContext } from "../context/AuthContext";
+
 
 const Products = () => {
+
+    const { isLogin } = useContext(AuthContext);
 
     // --------------------------------
     // ① 상품 전체 저장
@@ -53,7 +57,7 @@ const Products = () => {
 
             try {
 
-                const response = await axios.get(
+                const response = await api.get(
                     "http://localhost:8080/api/products"
                 );
 
@@ -77,6 +81,58 @@ const Products = () => {
     }, []);
 
 
+    // --------------------------------
+    // ⑦ 위시리스트 추가 / 삭제
+    // --------------------------------
+    const handleWishlist = async (product) => {
+
+        //로그인하지않은경우
+        if(!isLogin){
+            alert("로그인 후 이용해주세요.");
+            return;
+        }
+
+        try {
+
+
+            // 아직 찜하지 않은 상품 → 추가
+            await api.post(
+                `http://localhost:8080/api/wishlist/${product.productId}`
+            );
+
+        
+
+
+
+         // 화면의 isWishlist 변경
+        setProducts((prevProducts) =>
+            prevProducts.map((item) =>
+                item.productId === product.productId
+                    ? {
+                        ...item,
+                        isWishlist: !item.isWishlist
+                    }
+                    : item
+            )
+        );
+
+        } catch (error) {
+
+            console.error(
+                "위시리스트 처리 실패:",
+                error
+            );
+                if (error.response) {
+
+        alert(error.response.data.message);
+
+    }
+
+        }
+
+    };
+
+
     return (
 
         <div className="products-container">
@@ -87,7 +143,7 @@ const Products = () => {
 
 
             {/* --------------------------------
-                ⑦ 상품 9개 출력
+                ⑧ 상품 9개 출력
             -------------------------------- */}
             <div className="product-grid">
 
@@ -95,26 +151,37 @@ const Products = () => {
 
                     <div
                         className="product-card"
-                        key={product.productName}
+                        key={product.productId}
                     >
 
                         {/* 하트 */}
-                        <Link
-                            to="/wishlist"
+                        <button
                             className="wishlist-button"
+                            onClick={() =>
+                                handleWishlist(product)
+                            }
                         >
-                            <FiHeart />
-                        </Link>
+                            <FiHeart
+                                fill={
+                                    product.isWishlist
+                                        ? "currentColor"
+                                        : "none"
+                                }
+                            />
+                        </button>
 
 
                         {/* 상품 사진 */}
-                        <Link to={`/products/${product.productId}`}>
-                        <img
-                            className="product-image"
-                            src={`http://localhost:8080${product.thumbnail}`}
-                            alt={product.productName}
-                        />
+                        <Link
+                            to={`/products/${product.productId}`}
+                        >
+                            <img
+                                className="product-image"
+                                src={`http://localhost:8080${product.thumbnail}`}
+                                alt={product.productName}
+                            />
                         </Link>
+
 
                         {/* 상품 정보 */}
                         <div className="product-info">
@@ -146,7 +213,7 @@ const Products = () => {
 
 
             {/* --------------------------------
-                ⑧ 페이지 버튼
+                ⑨ 페이지 버튼
             -------------------------------- */}
             <div className="pagination">
 

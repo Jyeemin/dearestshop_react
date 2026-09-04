@@ -1,0 +1,267 @@
+/* ================================
+   전체 페이지
+================================ */
+
+.wishlist-page {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   상단 제목
+================================ */
+
+.wishlist-header {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 65px;
+}
+
+.wishlist-header h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.wishlist-count {
+    margin-top: 22px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.wishlist-login-text {
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #111;
+}
+
+.wishlist-login-text span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* ================================
+   상품 전체 영역
+================================ */
+
+.wishlist-container {
+    width: 820px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    column-gap: 8px;
+    row-gap: 60px;
+}
+
+
+/* ================================
+   상품 하나
+================================ */
+
+.wishlist-item {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* ================================
+   상품 이미지 영역
+================================ */
+
+.wishlist-image-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 385px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* 상품 이미지 */
+
+.wishlist-image-wrapper img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    cursor: pointer;
+
+    display: block;
+}
+
+
+/* ================================
+   하트
+================================ */
+
+.wishlist-heart {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    font-size: 19px;
+
+    color: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wishlist-heart:hover {
+    opacity: 0.55;
+}
+
+
+/* ================================
+   상품 정보
+================================ */
+
+.wishlist-info {
+    margin-top: 20px;
+}
+
+.wishlist-product-name {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+.wishlist-price {
+    margin-top: 7px;
+    margin-bottom: 0;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   장바구니 버튼
+================================ */
+
+.wishlist-cart-button {
+    width: 100%;
+    height: 41px;
+
+    margin-top: 46px;
+
+    border: none;
+
+    background-color: #f5e8eb;
+
+    color: #111;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.wishlist-cart-button:hover {
+    background-color: #eedcdf;
+}
+
+
+/* ================================
+   빈 위시리스트
+================================ */
+
+.wishlist-empty {
+    text-align: center;
+
+    margin-top: 100px;
+}
+
+.wishlist-empty p {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.wishlist-empty button {
+    width: 180px;
+    height: 42px;
+
+    border: none;
+
+    background-color: #f5e8eb;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   로딩
+================================ */
+
+.wishlist-loading {
+    width: 100%;
+    height: 60vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   반응형
+================================ */
+
+@media (max-width: 900px) {
+
+    .wishlist-container {
+        width: 90%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .wishlist-container {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        row-gap: 50px;
+    }
+
+    .wishlist-image-wrapper {
+        height: 420px;
+    }
+
+}
