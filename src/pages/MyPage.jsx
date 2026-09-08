@@ -39,7 +39,7 @@ const MyPage = () => {
 
 
           <NavLink
-            to="/mypage/addresses"
+            to="/address"
             className={({ isActive }) =>
               isActive ? "active" : ""
             }

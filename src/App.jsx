@@ -14,6 +14,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
+import Address from "./pages/Address";
 
 
 
@@ -36,8 +37,8 @@ function App() {
       <Route path="/products" element={<Products/>}/>
       <Route path="/products/:id" element={<ProductDetail/>}/>
       <Route path="/cart" element={<Cart />}/>
-      <Route path="/Wishlist" element={<Wishlist />}
-
+      <Route path="/Wishlist" element={<Wishlist />}/>
+      <Route path ="/Address" element={<Address />}
 />
 
       </Routes>
