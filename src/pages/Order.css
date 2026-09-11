@@ -1,0 +1,1211 @@
+/* ==========================================
+   전체 주문 페이지
+========================================== */
+
+.order-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #111111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==========================================
+   주문 페이지 전체 폭
+========================================== */
+
+.order-container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+}
+
+
+/* ==========================================
+   각각의 주문 영역
+========================================== */
+
+.order-section {
+    width: 100%;
+    margin-bottom: 34px;
+}
+
+
+/* ==========================================
+   섹션 제목
+========================================== */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+
+.section-title h2 {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.section-arrow {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+
+/* ==========================================
+   배송지 상단
+========================================== */
+
+.address-top {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+/* ==========================================
+   최근 배송지 / 직접입력
+========================================== */
+
+.address-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.address-tab {
+    height: 28px;
+
+    padding: 0 13px;
+
+    border: 1px solid #d7d7d7;
+    border-radius: 15px;
+
+    background-color: #ffffff;
+
+    font-size: 12px;
+    color: #999999;
+
+    cursor: pointer;
+}
+
+
+.address-tab.active {
+    border-color: #111111;
+    color: #111111;
+}
+
+
+/* ==========================================
+   배송지 목록 버튼
+========================================== */
+
+.address-list-button {
+    height: 40px;
+
+    padding: 0 14px;
+
+    border: 1px solid #bdbdbd;
+
+    background-color: #ffffff;
+
+    font-size: 12px;
+    color: #333333;
+
+    cursor: pointer;
+}
+
+
+.address-list-button:hover {
+    background-color: #f8f8f8;
+}
+
+
+/* ==========================================
+   최근 배송지
+========================================== */
+
+.recent-address-area {
+    width: 100%;
+    min-height: 82px;
+
+    padding: 8px 0 18px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.recent-address {
+    display: flex;
+    align-items: flex-start;
+
+    width: 100%;
+
+    padding: 10px 0;
+
+    cursor: pointer;
+}
+
+
+.recent-address.selected {
+    background-color: #fafafa;
+}
+
+
+/* ==========================================
+   라디오 버튼
+========================================== */
+
+.recent-address input,
+.saved-address input {
+    width: 15px;
+    height: 15px;
+
+    margin: 3px 12px 0 0;
+
+    accent-color: #111111;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   주소 정보
+========================================== */
+
+.recent-address-info,
+.saved-address-info {
+    line-height: 1.7;
+}
+
+
+.recent-address-title,
+.address-main {
+    font-size: 13px;
+    color: #111111;
+}
+
+
+.recent-address-text,
+.address-detail {
+    font-size: 12px;
+    color: #555555;
+}
+
+
+.default-label {
+    margin-right: 5px;
+
+    font-size: 12px;
+    color: #111111;
+}
+
+
+/* ==========================================
+   최근 배송지가 없을 때
+========================================== */
+
+.no-address {
+    padding: 25px 0;
+
+    font-size: 13px;
+    color: #999999;
+}
+
+
+/* ==========================================
+   배송지 목록
+========================================== */
+
+.address-list-area {
+    width: 100%;
+
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   배송지 하나를 감싸는 영역
+========================================== */
+
+.saved-address-wrapper {
+    width: 100%;
+}
+
+
+/* ==========================================
+   저장된 배송지
+========================================== */
+
+.saved-address {
+    display: flex;
+    align-items: flex-start;
+
+    width: 100%;
+
+    padding: 18px 10px;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #eeeeee;
+
+    cursor: pointer;
+}
+
+
+.saved-address:last-child {
+    border-bottom: none;
+}
+
+
+.saved-address:hover {
+    background-color: #fafafa;
+}
+
+
+.saved-address.selected {
+    background-color: #fafafa;
+}
+
+
+/* ==========================================
+   저장된 배송지 정보
+========================================== */
+
+.saved-address-info {
+    flex: 1;
+}
+
+
+/* ==========================================
+   수정 / 삭제 버튼 영역
+========================================== */
+
+.address-action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+}
+
+
+/* ==========================================
+   수정 / 삭제 버튼
+========================================== */
+
+.address-edit-button,
+.address-delete-button {
+    display: block;
+
+    width: 45px;
+    min-width: 45px;
+    height: 28px;
+
+    padding: 0;
+
+    border: 1px solid #dddddd;
+
+    background-color: #ffffff;
+
+    color: #555555;
+
+    font-size: 11px;
+
+    line-height: 26px;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+
+.address-edit-button:hover,
+.address-delete-button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* ==========================================
+   주소 수정 영역
+========================================== */
+
+.address-edit-area {
+    width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #eeeeee;
+
+    background-color: #fafafa;
+}
+
+
+/* ==========================================
+   수정 제목
+========================================== */
+
+.address-edit-title {
+    margin-bottom: 15px;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   수정 우편번호 + 주소검색
+========================================== */
+
+.edit-zipcode-row {
+    display: flex;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+}
+
+
+.edit-zipcode-row input {
+    width: 180px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dddddd;
+
+    background-color: #ffffff;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.edit-zipcode-row button {
+    width: 90px;
+    height: 42px;
+
+    margin-left: -1px;
+
+    border: 1px solid #aaaaaa;
+
+    background-color: #ffffff;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.edit-zipcode-row button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* ==========================================
+   수정 주소 input
+========================================== */
+
+.edit-address-input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    margin-bottom: 10px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dddddd;
+
+    background-color: #ffffff;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.edit-address-input:focus {
+    border-color: #999999;
+}
+
+
+/* ==========================================
+   수정 기본 배송지 체크
+========================================== */
+
+.edit-default-check {
+    display: flex;
+    align-items: center;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+    color: #555555;
+
+    cursor: pointer;
+}
+
+
+.edit-default-check input {
+    width: 14px;
+    height: 14px;
+
+    margin-right: 7px;
+
+    accent-color: #111111;
+}
+
+
+/* ==========================================
+   수정 저장 / 취소 버튼
+========================================== */
+
+.edit-action-buttons {
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 15px;
+}
+
+
+.edit-save-button,
+.edit-cancel-button {
+    height: 34px;
+
+    padding: 0 15px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+/* 저장 */
+
+.edit-save-button {
+    border: 1px solid #111111;
+
+    background-color: #111111;
+
+    color: #ffffff;
+}
+
+
+.edit-save-button:hover {
+    background-color: #333333;
+}
+
+
+/* 취소 */
+
+.edit-cancel-button {
+    border: 1px solid #cccccc;
+
+    background-color: #ffffff;
+
+    color: #555555;
+}
+
+
+.edit-cancel-button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* ==========================================
+   직접 입력
+========================================== */
+
+.new-address-area {
+    width: 100%;
+
+    padding: 10px 0 25px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* ==========================================
+   폼 한 줄
+========================================== */
+
+.form-row {
+    display: flex;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-bottom: 16px;
+}
+
+
+.form-row > label {
+    width: 90px;
+
+    padding-top: 12px;
+
+    font-size: 13px;
+}
+
+
+.form-row > label span {
+    color: #111111;
+}
+
+
+/* ==========================================
+   직접입력 input
+========================================== */
+
+.form-row > input {
+    flex: 1;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dddddd;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.form-row > input:focus {
+    border-color: #999999;
+}
+
+
+/* ==========================================
+   주소 입력 영역
+========================================== */
+
+.address-input-area {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ==========================================
+   우편번호 + 주소검색
+========================================== */
+
+.zipcode-row {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+
+.zipcode-row input {
+    width: 180px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dddddd;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.zipcode-row button {
+    width: 90px;
+    height: 42px;
+
+    margin-left: -1px;
+
+    border: 1px solid #aaaaaa;
+
+    background-color: #ffffff;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.zipcode-row button:hover {
+    background-color: #f7f7f7;
+}
+
+
+/* ==========================================
+   기본주소 / 상세주소
+========================================== */
+
+.address-input-area > input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dddddd;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.address-input-area > input:focus {
+    border-color: #999999;
+}
+
+
+/* ==========================================
+   기본 배송지 체크
+========================================== */
+
+.default-address-check {
+    display: flex;
+    align-items: center;
+
+    margin-left: 90px;
+
+    font-size: 12px;
+    color: #555555;
+
+    cursor: pointer;
+}
+
+
+.default-address-check input {
+    width: 14px;
+    height: 14px;
+
+    margin-right: 7px;
+
+    accent-color: #111111;
+}
+
+
+/* ==========================================
+   배송 메시지
+========================================== */
+
+.delivery-message {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    margin-top: 20px;
+
+    border: 1px solid #dddddd;
+
+    background-color: #ffffff;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+
+/* ==========================================
+   주문상품
+========================================== */
+
+.order-items {
+    width: 100%;
+}
+
+
+/* ==========================================
+   주문 상품 하나
+========================================== */
+
+.order-item {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+
+    width: 100%;
+
+    padding: 16px 0;
+
+    border-bottom: 1px dashed #dddddd;
+}
+
+
+/* ==========================================
+   상품 이미지
+========================================== */
+
+.order-item-image {
+    width: 90px;
+    height: 110px;
+
+    border: 1px solid #dddddd;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+
+.order-item-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   상품 정보
+========================================== */
+
+.order-item-info {
+    padding-left: 15px;
+
+    padding-top: 2px;
+}
+
+
+.product-name {
+    margin: 0 0 7px;
+
+    font-size: 13px;
+    color: #111111;
+}
+
+
+.product-quantity {
+    margin: 0 0 4px;
+
+    font-size: 11px;
+    color: #777777;
+}
+
+
+.order-item-info strong {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   주문상품 삭제
+========================================== */
+
+.delete-order-item {
+    position: absolute;
+
+    top: 18px;
+    right: 5px;
+
+    width: 24px;
+    height: 24px;
+
+    border: 1px solid #cccccc;
+
+    background-color: #ffffff;
+
+    color: #777777;
+
+    font-size: 18px;
+    font-weight: 300;
+
+    line-height: 20px;
+
+    cursor: pointer;
+}
+
+
+.delete-order-item:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* ==========================================
+   주문상품 없음
+========================================== */
+
+.empty-order {
+    padding: 30px 0;
+
+    text-align: center;
+
+    font-size: 13px;
+    color: #999999;
+}
+
+
+/* ==========================================
+   배송비
+========================================== */
+
+.delivery-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 14px 15px;
+
+    box-sizing: border-box;
+
+    background-color: #f5f5f5;
+}
+
+
+.delivery-price span {
+    font-size: 13px;
+}
+
+
+.delivery-price strong {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   결제정보
+========================================== */
+
+.payment-summary {
+    padding-top: 5px;
+}
+
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 11px 0;
+
+    font-size: 13px;
+}
+
+
+.price-row strong {
+    font-weight: 400;
+}
+
+
+.discount-row strong {
+    color: #ff5555;
+}
+
+
+/* ==========================================
+   최종 결제 금액
+========================================== */
+
+.final-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 17px 15px;
+
+    box-sizing: border-box;
+
+    background-color: #f5f5f5;
+}
+
+
+.final-price span {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+.final-price strong {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   결제수단
+========================================== */
+
+.payment-method-section {
+    padding-top: 5px;
+}
+
+
+.payment-option {
+    width: 100%;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.payment-option label {
+    display: flex;
+    align-items: center;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.payment-option input {
+    width: 16px;
+    height: 16px;
+
+    margin-right: 10px;
+
+    accent-color: #111111;
+}
+
+
+/* ==========================================
+   선택된 신용카드
+========================================== */
+
+.selected-payment {
+    margin-top: 12px;
+
+    padding: 13px 15px;
+
+    border: 1px solid #111111;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   결제 안내
+========================================== */
+
+.payment-notice {
+    margin-top: 25px;
+
+    padding: 30px;
+
+    border: 1px solid #eeeeee;
+
+    font-size: 11px;
+    color: #777777;
+}
+
+
+/* ==========================================
+   결제수단 저장
+========================================== */
+
+.save-payment {
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.save-payment input {
+    width: 16px;
+    height: 16px;
+
+    margin-right: 8px;
+
+    accent-color: #111111;
+}
+
+
+/* ==========================================
+   적립 혜택
+========================================== */
+
+.point-section {
+    margin-bottom: 15px;
+}
+
+
+.point-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 17px 0;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   결제하기 버튼
+========================================== */
+
+.order-submit-btn {
+    display: block;
+
+    width: 100%;
+    height: 52px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    background-color: #5d5d5d;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.order-submit-btn:hover {
+    background-color: #444444;
+}
+
+
+/* ==========================================
+   하단 안내
+========================================== */
+
+.order-notice {
+    padding: 25px 5px 0;
+
+    font-size: 10px;
+    line-height: 1.8;
+
+    color: #777777;
+}
+
+
+.order-notice p {
+    margin: 0 0 7px;
+}
+
+
+/* ==========================================
+   화면이 작을 때
+========================================== */
+
+@media (max-width: 950px) {
+
+    .order-container {
+        width: calc(100% - 60px);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .order-container {
+        width: calc(100% - 30px);
+
+        padding-top: 25px;
+    }
+
+
+    .address-top {
+        align-items: flex-start;
+    }
+
+
+    .address-list-button {
+        height: 34px;
+
+        padding: 0 10px;
+
+        font-size: 11px;
+    }
+
+
+    .form-row {
+        flex-direction: column;
+    }
+
+
+    .form-row > label {
+        width: 100%;
+
+        padding-top: 0;
+
+        margin-bottom: 7px;
+    }
+
+
+    .default-address-check {
+        margin-left: 0;
+    }
+
+
+    .order-item-image {
+        width: 75px;
+        height: 95px;
+    }
+
+
+    .saved-address {
+        flex-wrap: wrap;
+    }
+
+
+    .address-action-buttons {
+        width: 100%;
+
+        margin-top: 10px;
+        margin-left: 27px;
+
+        justify-content: flex-start;
+    }
+
+}

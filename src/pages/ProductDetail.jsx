@@ -38,6 +38,7 @@ const ProductDetail = () => {
     const [quantity, setQuantity] = useState(1);
 
 
+
     // =================================
     // 상품 상세 조회
     // =================================
@@ -55,6 +56,7 @@ const ProductDetail = () => {
                 console.log("상품 상세:", response.data);
 
                 setProduct(response.data.data);
+            
 
             } catch (error) {
 
@@ -154,7 +156,9 @@ const handleAddCart = async () => {
 
         quantity: quantity,
 
-        size: selectedSize
+        size: selectedSize,
+
+        price: product.price
 
     };
     console.log(product.id);

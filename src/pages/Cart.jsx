@@ -117,7 +117,7 @@ const Cart = () => {
             <div className="cart-loading">
                 장바구니를 불러오는 중...
             </div>
-        );
+        )
 
     }
 
@@ -397,7 +397,14 @@ const Cart = () => {
                     <button
                         className="order-button"
                         onClick={() => {
-                            alert("주문 기능은 준비 중입니다.");
+                            navigate("/Order",
+                                {
+                                    state:{
+                                        cartItems : cartItems
+                                    }
+                                }
+
+                            );
                         }}
                     >
                         ORDER
