@@ -722,6 +722,63 @@
 
 
 /* ==========================================
+   받는 사람
+========================================== */
+
+.receiver-area {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+
+.receiver-label {
+    width: 90px;
+
+    font-size: 13px;
+    color: #111111;
+}
+
+
+.receiver-label span {
+    color: #111111;
+}
+
+
+.receiver-input {
+    flex: 1;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dddddd;
+
+    background-color: #ffffff;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.receiver-input::placeholder {
+    color: #aaaaaa;
+}
+
+
+.receiver-input:focus {
+    border-color: #999999;
+}
+
+
+/* ==========================================
    배송 메시지
 ========================================== */
 
@@ -1185,6 +1242,30 @@
 
     .default-address-check {
         margin-left: 0;
+    }
+
+
+    /* ==========================================
+       모바일 받는 사람
+    ========================================== */
+
+    .receiver-area {
+        flex-direction: column;
+        align-items: flex-start;
+
+        margin-top: 20px;
+    }
+
+
+    .receiver-label {
+        width: 100%;
+
+        margin-bottom: 7px;
+    }
+
+
+    .receiver-input {
+        width: 100%;
     }
 
 

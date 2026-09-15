@@ -86,32 +86,39 @@ const Order = () => {
     // 주소 조회
     // ==========================================
 
-const getAddresses = async () => {
+    const getAddresses = async () => {
 
-    try {
+        try {
 
-        const response = await api.get("http://localhost:8080/api/address");
+            const response = await api.get(
+                "http://localhost:8080/api/address"
+            );
 
-        const addressList = response.data.data || [];
+            const addressList = response.data.data || [];
 
-        setAddresses(addressList);
+            setAddresses(addressList);
 
-    } catch (error) {
+        } catch (error) {
 
-        console.error("주소 조회 실패:", error);
+            console.error("주소 조회 실패:", error);
 
-    }
+        }
 
-};
+    };
+
+
     // ==========================================
     // 처음 페이지가 열렸을 때 주소 조회
     // ==========================================
 
-useEffect(() => {
+    useEffect(() => {
 
-    getAddresses();
+         window.scrollTo(0, 0);
+         
+        getAddresses();
 
-}, []);
+    }, []);
+
 
     // ==========================================
     // 최근 배송지
@@ -206,10 +213,11 @@ useEffect(() => {
 
     const startEditAddress = (address) => {
 
-            console.log("전체 address 객체:", address);
-    console.log("isDefault:", address.isDefault);
-    console.log("default:", address.default);
-    console.log("defaultAddress:", address.defaultAddress);
+        console.log("전체 address 객체:", address);
+        console.log("isDefault:", address.isDefault);
+        console.log("default:", address.default);
+        console.log("defaultAddress:", address.defaultAddress);
+
         // 현재 수정 중인 주소 ID
         setEditingAddressId(address.addressId);
 
@@ -218,7 +226,6 @@ useEffect(() => {
         setEditRoadAddress(address.roadAddress);
         setEditDetailAddress(address.detailAddress);
         setEditIsDefault(address.default);
-        
 
     };
 
@@ -415,47 +422,6 @@ useEffect(() => {
 
 
     // ==========================================
-    // 새 주소 저장
-    // ==========================================
-
-    const createNewAddress = async () => {
-
-        try {
-
-            const response = await api.post(
-                "http://localhost:8080/api/address/add"
-                ,
-                {
-                    zoneCode: zoneCode,
-                    roadAddress: roadAddress,
-                    detailAddress: detailAddress,
-                    isDefault: isDefault
-                }
-            );
-
-
-            // 서버에서 생성된 addressId
-            const newAddressId = response.data.data;
-
-            return newAddressId;
-
-        } catch (error) {
-
-            console.error("주소 추가 실패:", error);
-
-            alert(
-                error.response?.data?.message ||
-                "주소 추가에 실패했습니다."
-            );
-
-            return null;
-
-        }
-
-    };
-
-
-    // ==========================================
     // 주문하기
     // ==========================================
 
@@ -463,12 +429,41 @@ useEffect(() => {
 
         try {
 
-            let addressId = selectedAddressId;
+            // ==========================================
+            // 주소 정보
+            // ==========================================
+
+            let addressId = null;
+
+            let newAddress = null;
 
 
-            // ----------------------------------
-            // 직접입력 배송지
-            // ----------------------------------
+            // ==========================================
+            // 기존 배송지 선택
+            // ==========================================
+
+            if (
+                addressView === "recent" ||
+                addressView === "list"
+            ) {
+
+                addressId = selectedAddressId;
+
+
+                if (!addressId) {
+
+                    alert("배송지를 선택해주세요.");
+
+                    return;
+
+                }
+
+            }
+
+
+            // ==========================================
+            // 새 주소 직접 입력
+            // ==========================================
 
             if (addressView === "direct") {
 
@@ -481,33 +476,27 @@ useEffect(() => {
                 }
 
 
-                if (!receiverName) {
+                // 새 주소 객체 생성
+                newAddress = {
 
-                    alert("받는 사람을 입력해주세요.");
+                    zoneCode: zoneCode,
 
-                    return;
+                    roadAddress: roadAddress,
 
-                }
+                    detailAddress: detailAddress,
 
+                    isDefault: isDefault
 
-                // 직접 입력한 주소를 회원 주소로 저장
-                addressId = await createNewAddress();
-
-
-                if (!addressId) {
-
-                    return;
-
-                }
+                };
 
             }
 
 
-            // ----------------------------------
+            // ==========================================
             // 받는 사람 확인
-            // ----------------------------------
+            // ==========================================
 
-            if (!receiverName) {
+            if (!receiverName.trim()) {
 
                 alert("받는 사람을 입력해주세요.");
 
@@ -516,22 +505,9 @@ useEffect(() => {
             }
 
 
-            // ----------------------------------
-            // 배송지 확인
-            // ----------------------------------
-
-            if (!addressId) {
-
-                alert("배송지를 선택해주세요.");
-
-                return;
-
-            }
-
-
-            // ----------------------------------
+            // ==========================================
             // 주문상품 확인
-            // ----------------------------------
+            // ==========================================
 
             if (orderItems.length === 0) {
 
@@ -542,28 +518,47 @@ useEffect(() => {
             }
 
 
-            // ----------------------------------
-            // 주문상품 ID
-            // ----------------------------------
+            // ==========================================
+            // 장바구니 상품 ID
+            // ==========================================
 
-            const orderItemIds = orderItems.map(
+            const cartItemIds = orderItems.map(
                 (item) => item.cartItemId
             );
 
 
-            // ----------------------------------
+            // ==========================================
+            // 주문 요청 데이터
+            // ==========================================
+
+            const orderData = {
+
+                addressId: addressId,
+
+                receiverName: receiverName,
+
+                newAddress: newAddress,
+
+                deliveryMessage: deliveryMessage,
+
+                cartItemIds: cartItemIds
+
+            };
+
+
+            console.log(
+                "주문 요청 데이터:",
+                orderData
+            );
+
+
+            // ==========================================
             // 주문 생성
-            // ----------------------------------
+            // ==========================================
 
             const response = await api.post(
-                "http://localhost:8080/api/order"
-                ,
-                {
-                    addressId: addressId,
-                    receiverName: receiverName,
-                    deliveryMessage: deliveryMessage,
-                    orderItemIds: orderItemIds
-                }
+                "http://localhost:8080/api/order",
+                orderData
             );
 
 
@@ -572,6 +567,7 @@ useEffect(() => {
 
             console.log("주문 완료:", orderId);
 
+            alert("주문이 완료되었습니다!");
 
             navigate(`/order-complete/${orderId}`);
 
@@ -1049,30 +1045,6 @@ useEffect(() => {
 
                         <div className="new-address-area">
 
-
-                            {/* 받는 사람 */}
-
-                            <div className="form-row">
-
-                                <label>
-                                    받는사람 <span>*</span>
-                                </label>
-
-
-                                <input
-                                    type="text"
-                                    value={receiverName}
-                                    onChange={(e) =>
-                                        setReceiverName(
-                                            e.target.value
-                                        )
-                                    }
-                                    placeholder="받는 사람"
-                                />
-
-                            </div>
-
-
                             {/* 주소 */}
 
                             <div className="form-row">
@@ -1083,7 +1055,6 @@ useEffect(() => {
 
 
                                 <div className="address-input-area">
-
 
                                     {/* 우편번호 */}
 
@@ -1159,6 +1130,32 @@ useEffect(() => {
 
 
                     {/* ==================================================
+                        받는 사람
+                    ================================================== */}
+
+                    <div className="receiver-area">
+
+                        <label className="receiver-label">
+
+                            받는 사람 <span>*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            className="receiver-input"
+                            value={receiverName}
+                            onChange={(e) =>
+                                setReceiverName(e.target.value)
+                            }
+                            placeholder="받는 사람 이름을 입력해주세요."
+                        />
+
+                    </div>
+
+
+                    {/* ==================================================
                         배송 메시지
                     ================================================== */}
 
@@ -1191,7 +1188,6 @@ useEffect(() => {
                     </select>
 
                 </section>
-
 
 
                 {/* ==================================================
@@ -1238,13 +1234,9 @@ useEffect(() => {
 
                                         <img
                                             src={
-                                                item.thumbnail?.startsWith(
-                                                    "http"
-                                                )
+                                                item.imgUrl?.startsWith("http")
                                                     ? item.imgUrl
-                                                    : `http://localhost:8080${
-                                                        item.imgUrl || ""
-                                                    }`
+                                                    : `http://localhost:8080${item.imgUrl || ""}`
                                             }
                                             alt={item.productName}
                                         />
@@ -1327,7 +1319,6 @@ useEffect(() => {
                 </section>
 
 
-
                 {/* ==================================================
                     3. 결제정보
                 ================================================== */}
@@ -1397,7 +1388,6 @@ useEffect(() => {
                     </div>
 
                 </section>
-
 
 
                 {/* ==================================================
@@ -1506,7 +1496,6 @@ useEffect(() => {
                 </section>
 
 
-
                 {/* ==================================================
                     5. 적립혜택
                 ================================================== */}
@@ -1529,7 +1518,6 @@ useEffect(() => {
                 </section>
 
 
-
                 {/* ==================================================
                     6. 결제하기
                 ================================================== */}
@@ -1543,7 +1531,6 @@ useEffect(() => {
                     ₩{formatPrice(finalPrice)} 결제하기
 
                 </button>
-
 
 
                 {/* ==================================================

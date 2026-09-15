@@ -122,7 +122,6 @@ const ProductDetail = () => {
 
     const totalPrice = product.price * quantity;
 
-
     // =================================
     // 장바구니 추가
     // =================================

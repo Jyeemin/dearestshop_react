@@ -1,69 +1,135 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import api from "../axios/api";
 
 const AddressAdd = () => {
 
-    const [zipcode, setZipcode] = useState("");
-    const [baseAddress, setBaseAddress] = useState("");
-    const [detailAddress, setDetailAddress] = useState("");
+    const { orderId } = useParams();
+    const navigate = useNavigate();
 
-    const searchAddress = () => {
+    const [order, setOrder] = useState(null);
 
-        console.log("주소검색 버튼 클릭!");
-        console.log("window.daum:", window.daum);
 
-        if (!window.daum) {
-            alert("주소 검색 서비스를 불러오지 못했습니다.");
-            return;
+    useEffect(() => {
+
+    const getOrder = async () => {
+
+        try{
+            const response = await api.get(
+                `http://localhost:8080/api/order/${orderId}`
+            );
+
+            console.log("주문 정보 조회 결과:", response.data);
+            setOrder(response.data.data);
+
+        }catch(error){
+            console.error("주문 정보를 불러오는 중 오류가 발생했습니다.", error);
         }
+    }
+    getOrder();
 
-        new window.daum.Postcode({
+    }, [orderId]);
 
-            oncomplete: function (data) {
+    if (!order) {
+    return <div>주문 정보를 불러오는 중...</div>;
+}
+    
+    const goToOrderlist = () => {
+        navigate("/mypage/orders");
+    }
+    
 
-                console.log("선택한 주소:", data);
 
-                setZipcode(data.zonecode);
-                setBaseAddress(data.roadAddress);
-
-            }
-
-        }).open();
-    };
 
     return (
-        <div>
+        <div className="order-detail">
 
-            <h2>배송지 추가</h2>
+        <div className="order-info">
+        <h2>주문 정보</h2>
+        </div>
+        <div className="order-info-table">
+            <div className="order-info-row">
+                <div className="order-info-label">주문번호</div>
+            </div>
+            <div className="order-info-value">
+                        order ? (
+                <div>
+                    <p>주문번호</p>
+                    <p>{order.orderId}</p>
+                </div>
+            ) : (
+                <p>주문 정보를 불러오는 중입니다.</p>
+            )
+            </div>
+            </div>
 
-            <div>
-                <input
-                    value={zipcode}
-                    readOnly
-                    placeholder="우편번호"
-                />
+            <div className="order-info-row">
+                <div className="order-info-label">주문일자</div>
+                <div className="order-info-value">
+                new Date({ order.orderDate }).toLocaleString()
+                </div>
+            </div>
 
-                <button onClick={searchAddress}>
-                    주소검색
+            <div className="order-info-row">
+                <div className="order-info-label">주문자
+                </div>
+                <div className="order-info-value">
+                    {order.memberName}
+                </div>
+            </div>
+
+            <div className="order-info-row">
+            <div className="order-info-label"> 주문처리상태            </div>
+            <div className="order-info-value"> {order.status}
+            </div>
+            </div>
+
+
+
+
+            <div className="payment-info">
+                <h2>결제 정보</h2>
+                <div className="payment-info-table">
+
+                </div>
+            </div>
+
+
+
+
+            <div className="order-product">
+                <h2>주문 상품</h2>
+                <div className="order-product-list"></div>
+            </div>
+
+
+
+
+            <div className="delivery-info">
+                <h2>배송 정보</h2>
+                <div className="delivery-info-table"></div>
+            </div>
+
+
+
+
+
+            <div className="order-detail-button">
+                <button onClick={goToOrderlist}>
+                    주문목록보기
                 </button>
             </div>
 
-            <div>
-                <input
-                    value={baseAddress}
-                    readOnly
-                    placeholder="기본주소"
-                />
-            </div>
 
-            <div>
-                <input
-                    value={detailAddress}
-                    onChange={(e) => setDetailAddress(e.target.value)}
-                    placeholder="상세주소"
-                />
-            </div>
 
         </div>
+
+
+
+
+
+
+        
     );
 };
 

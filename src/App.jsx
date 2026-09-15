@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import {Routes, Route} from "react-router-dom";
 import Login from "./pages/Login";
@@ -16,6 +17,10 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Address from "./pages/Address";
 import Order from "./pages/Order";
+import OrderComplete from "./pages/OrderComplete";
+import OrderList from "./pages/Orderlist";
+import OrderDetail from "./pages/OrderDetail";
+import AdminOrderlist from "./pages/AdminOrderlist";
 
 
 
@@ -23,6 +28,7 @@ function App() {
  
   return (
     <>
+    <ScrollToTop />
        <div className="App Container">
         <Header/>
   
@@ -40,7 +46,17 @@ function App() {
       <Route path="/cart" element={<Cart />}/>
       <Route path="/Wishlist" element={<Wishlist />}/>
       <Route path ="/Address" element={<Address />}/>
-      <Route path ="/Order" element={<Order/>}
+      <Route path ="/Order" element={<Order/>}/>
+      <Route path="/order-complete/:orderId"element={<OrderComplete />}/>
+      <Route path="/mypage/orders"
+    element={
+        localStorage.getItem("role") === "ADMIN"
+            ? <AdminOrderlist />
+            : <OrderList />
+    }
+/>
+      <Route path="/mypage/orders/:orderId" element={<OrderDetail />}
+
 />
 
       </Routes>

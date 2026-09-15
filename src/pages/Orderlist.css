@@ -1,0 +1,710 @@
+/* =========================================
+   MEMBER ORDER LIST PAGE
+========================================= */
+
+.member-order-list-page {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 80px 40px 120px;
+
+    background-color: #faf7f5;
+
+    color: #333;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.member-order-list-title {
+
+    margin-bottom: 50px;
+}
+
+
+.member-order-list-title h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    color: #333;
+}
+
+
+.member-order-list-title p {
+
+    margin: 12px 0 0;
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* =========================================
+   NO ORDER
+========================================= */
+
+.member-no-order {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 300px;
+
+    border-top: 1px solid #e8dfdc;
+
+    border-bottom: 1px solid #e8dfdc;
+
+    background-color: #fff;
+}
+
+
+.member-no-order p {
+
+    margin: 0 0 25px;
+
+    font-size: 13px;
+
+    color: #999;
+}
+
+
+.member-no-order button {
+
+    width: 150px;
+
+    height: 42px;
+
+    border: 1px solid #ddd3d0;
+
+    background-color: #fff;
+
+    color: #555;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.member-no-order button:hover {
+
+    background-color: #fdf5f6;
+
+    border-color: #dca8ae;
+
+    color: #c58f96;
+}
+
+
+/* =========================================
+   ORDER LIST
+========================================= */
+
+.member-order-list {
+
+    width: 100%;
+}
+
+
+/* =========================================
+   ORDER CARD
+========================================= */
+
+.member-order-card {
+
+    width: 100%;
+
+    margin-bottom: 30px;
+
+    background-color: #fff;
+
+    border: 1px solid #e7dfdc;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+/* 마우스를 올렸을 때 */
+
+.member-order-card:hover {
+
+    border-color: #d8b7bb;
+
+    background-color: #fffdfc;
+}
+
+
+/* =========================================
+   ORDER HEADER
+========================================= */
+
+.member-order-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 22px 25px;
+
+    border-bottom: 1px solid #eee8e5;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER LEFT
+========================================= */
+
+.member-order-header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   ORDER NUMBER
+========================================= */
+
+.member-order-number {
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    color: #333;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ORDER DATE
+========================================= */
+
+.member-order-date {
+
+    font-size: 12px;
+
+    color: #999;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ORDER STATUS
+========================================= */
+
+.member-order-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: auto;
+
+    min-width: 0;
+
+    flex-shrink: 0;
+
+    padding: 6px 10px;
+
+    box-sizing: border-box;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    white-space: nowrap;
+
+    border: 1px solid;
+
+    border-radius: 2px;
+}
+
+
+/* =========================================
+   STATUS - ORDER
+========================================= */
+
+.member-order-status.member-status-order {
+
+    color: #c58f96;
+
+    background-color: #fcf1f2;
+
+    border-color: #efd9dc;
+}
+
+
+/* =========================================
+   STATUS - COMPLETE
+========================================= */
+
+.member-order-status.member-status-complete {
+
+    color: #4d8a5d;
+
+    background-color: #eff9f1;
+
+    border-color: #cde5d2;
+}
+
+
+/* =========================================
+   STATUS - CANCEL
+========================================= */
+
+.member-order-status.member-status-cancel {
+
+    color: #c94b4b;
+
+    background-color: #fff0f0;
+
+    border-color: #efcaca;
+}
+
+
+/* =========================================
+   ORDER ITEMS
+========================================= */
+
+.member-order-items {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 20px 25px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   ORDER ITEM
+========================================= */
+
+.member-order-item {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 10px 0;
+
+    box-sizing: border-box;
+}
+
+
+/* 여러 상품이 있을 때 */
+
+.member-order-item + .member-order-item {
+
+    padding-top: 20px;
+
+    margin-top: 10px;
+
+    border-top: 1px solid #f2eeec;
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.member-order-item-image {
+
+    width: 90px;
+
+    height: 115px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background-color: #f7f4f2;
+}
+
+
+.member-order-item-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   PRODUCT INFO
+========================================= */
+
+.member-order-item-info {
+
+    margin-left: 25px;
+
+    min-width: 0;
+}
+
+
+.member-order-item-info h3 {
+
+    margin: 0 0 13px;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: #333;
+}
+
+
+.member-order-item-info p {
+
+    margin: 5px 0;
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* =========================================
+   NO ITEMS
+========================================= */
+
+.member-order-no-items {
+
+    padding: 30px 0;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: #aaa;
+}
+
+
+/* =========================================
+   ORDER FOOTER
+========================================= */
+
+.member-order-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 20px 25px;
+
+    border-top: 1px solid #eee8e5;
+
+    background-color: #fdfbf9;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   ORDER TOTAL
+========================================= */
+
+.member-order-total {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.member-order-total span {
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+.member-order-total strong {
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color: #333;
+}
+
+
+/* =========================================
+   DETAIL LINK
+========================================= */
+
+.member-order-detail-link {
+
+    font-size: 11px;
+
+    color: #999;
+
+    letter-spacing: 0.3px;
+
+    transition: color 0.2s ease;
+}
+
+
+.member-order-card:hover .member-order-detail-link {
+
+    color: #c58f96;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+
+    .member-order-list-page {
+
+        padding: 60px 25px 100px;
+    }
+
+
+    .member-order-list-title {
+
+        margin-bottom: 35px;
+    }
+
+
+    .member-order-header {
+
+        padding: 18px 20px;
+    }
+
+
+    .member-order-items {
+
+        padding: 18px 20px;
+    }
+
+
+    .member-order-item-image {
+
+        width: 80px;
+
+        height: 105px;
+    }
+
+
+    .member-order-item-info {
+
+        margin-left: 18px;
+    }
+
+
+    .member-order-footer {
+
+        padding: 18px 20px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+
+    .member-order-list-page {
+
+        padding: 45px 15px 80px;
+    }
+
+
+    .member-order-list-title h2 {
+
+        font-size: 17px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    /* =====================================
+       주문 헤더
+    ===================================== */
+
+    .member-order-header {
+
+        padding: 16px;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .member-order-header-left {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 6px;
+
+        min-width: 0;
+    }
+
+
+    .member-order-number {
+
+        font-size: 12px;
+    }
+
+
+    .member-order-date {
+
+        font-size: 11px;
+    }
+
+
+    .member-order-status {
+
+        padding: 5px 9px;
+
+        font-size: 10px;
+    }
+
+
+    /* =====================================
+       상품
+    ===================================== */
+
+    .member-order-items {
+
+        padding: 15px 16px;
+    }
+
+
+    .member-order-item-image {
+
+        width: 70px;
+
+        height: 90px;
+    }
+
+
+    .member-order-item-info {
+
+        margin-left: 15px;
+    }
+
+
+    .member-order-item-info h3 {
+
+        margin-bottom: 9px;
+
+        font-size: 13px;
+    }
+
+
+    .member-order-item-info p {
+
+        font-size: 11px;
+    }
+
+
+    /* =====================================
+       하단
+    ===================================== */
+
+    .member-order-footer {
+
+        padding: 16px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+
+    .member-order-total {
+
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .member-order-total strong {
+
+        font-size: 14px;
+    }
+
+
+    .member-order-detail-link {
+
+        align-self: flex-end;
+    }
+
+}

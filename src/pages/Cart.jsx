@@ -225,7 +225,7 @@ const Cart = () => {
 
                         <div
                             className="cart-item"
-                            key={`${item.productId}-${item.productSize}`}
+                            key={item.cartItemId}
                         >
 
 

@@ -1,0 +1,157 @@
+.order-complete {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #faf7f5;
+
+    padding: 80px 20px;
+}
+
+.order-complete-box {
+    width: 100%;
+    max-width: 600px;
+
+    text-align: center;
+
+    background-color: #ffffff;
+
+    padding: 80px 50px;
+
+    border: 1px solid #eee5e1;
+}
+
+/* 주문 완료 문구 */
+
+.order-complete-box h1 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 400;
+
+    color: #333;
+}
+
+/* 하트 */
+
+.order-heart {
+    margin-top: 30px;
+    margin-bottom: 35px;
+
+    font-size: 42px;
+
+    font-weight: 300;
+
+    color: #dca8ae;
+}
+
+/* 주문번호 제목 */
+
+.order-number-title {
+    font-size: 13px;
+
+    color: #999;
+
+    margin-bottom: 10px;
+}
+
+/* 주문번호 */
+
+.order-number {
+    font-size: 18px;
+
+    letter-spacing: 1px;
+
+    color: #333;
+
+    margin-bottom: 35px;
+}
+
+/* 감사 문구 */
+
+.order-thanks {
+    margin: 0 0 45px;
+
+    font-size: 14px;
+
+    color: #777;
+}
+
+/* 버튼 */
+
+.order-complete-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+/* 주문 확인 */
+
+.order-confirm-btn,
+.continue-shopping-btn {
+    width: 190px;
+
+    height: 48px;
+
+    border: none;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.order-confirm-btn {
+    background-color: #dca8ae;
+
+    color: white;
+}
+
+.order-confirm-btn:hover {
+    background-color: #cf969e;
+}
+
+/* 쇼핑 계속 */
+
+.continue-shopping-btn {
+    background-color: white;
+
+    color: #555;
+
+    border: 1px solid #ddd;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #fafafa;
+}
+
+/* 모바일 */
+
+@media (max-width: 600px) {
+
+    .order-complete {
+        padding: 40px 15px;
+    }
+
+    .order-complete-box {
+        padding: 60px 25px;
+    }
+
+    .order-complete-box h1 {
+        font-size: 21px;
+    }
+
+    .order-complete-buttons {
+        flex-direction: column;
+    }
+
+    .order-confirm-btn,
+    .continue-shopping-btn {
+        width: 100%;
+    }
+}

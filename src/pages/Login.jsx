@@ -27,6 +27,8 @@ const Login = () => {
     alert(response.data.message);
     const token = response.data.data.token;
     localStorage.setItem("accesstoken", token);
+    localStorage.setItem("role",response.data.data.role);
+
     console.log(response.data);
     console.log(response.data.data);
     console.log(response.data.data.token);

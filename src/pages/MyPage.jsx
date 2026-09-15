@@ -89,6 +89,7 @@ const MyPage = () => {
           <div className="logout"
             onClick={() => {
                 localStorage.removeItem("accesstoken");
+                localStorage.removeItem("role");
                 setIsLogin(false);
                 setMember(null);
                 navigate("/");

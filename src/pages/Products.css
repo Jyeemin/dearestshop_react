@@ -187,3 +187,62 @@
     font-size: 13px;
 
 }
+
+
+/* ================================
+   상품 없음 / 로딩 안내
+================================ */
+
+.product-message {
+
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+.product-message p {
+
+    margin: 0;
+
+}
+
+.no-product-title {
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    margin-bottom: 12px !important;
+
+}
+
+.no-product-keyword {
+
+    font-size: 14px;
+
+    color: #666;
+
+    margin-bottom: 8px !important;
+
+}
+
+.no-product-guide {
+
+    font-size: 13px;
+
+    color: #999;
+
+}
