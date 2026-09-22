@@ -11,7 +11,7 @@ const ProductCreate = () => {
   const [price, setPrice] = useState("");
   const [stockQuantity, setStockQuantity] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [sizes, setSizes] = useState("");
+  const [sizes, setSizes] = useState([]);
 
   // -----------------------------
   // 이미지 파일
@@ -144,7 +144,8 @@ const ProductCreate = () => {
     }));
 
     // -----------------------------------------
-    // 3. FormData 생성
+    // 3. FormData 생성 
+    //FormData는 텍스트 데이터뿐만 아니라 실제 파일까지 한 번에 담아서 HTTP 요청으로 보내기 위한 상자
     // -----------------------------------------
     const formData = new FormData();
 
@@ -306,9 +307,9 @@ const ProductCreate = () => {
                   나중에 Category API로 가져오면 된다.
                 */}
                 <option value="1">TOP</option>
-                <option value="2">DRESS</option>
-                <option value="3">BOTTOM</option>
-                <option value="4">BAG</option>
+                <option value="2">BOTTOM</option>
+                <option value="3">DRESS</option>
+
               </select>
             </div>
 

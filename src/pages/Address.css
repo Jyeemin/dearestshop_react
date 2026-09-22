@@ -1,0 +1,740 @@
+/* ==========================================
+   전체
+========================================== */
+
+.address-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0 80px;
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        "Noto Sans KR",
+        sans-serif;
+
+    color: #555;
+}
+
+
+/* ==========================================
+   제목
+========================================== */
+
+.address-title {
+    margin: 0 0 45px;
+
+    font-size: 17px;
+    font-weight: 400;
+
+    color: #555;
+
+    letter-spacing: -0.4px;
+}
+
+
+/* ==========================================
+   배송지 목록
+========================================== */
+
+.address-list {
+    width: 100%;
+}
+
+
+/* ==========================================
+   배송지 한 줄
+========================================== */
+
+.address-item {
+    width: 100%;
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #222;
+
+    box-sizing: border-box;
+}
+
+
+/* 첫 번째 배송지 위쪽 여백 */
+
+.address-item:first-child {
+    border-top: 1px solid #222;
+}
+
+
+/* ==========================================
+   왼쪽 주소 영역
+========================================== */
+
+.address-info {
+    display: flex;
+    align-items: flex-start;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+/* ==========================================
+   체크박스
+========================================== */
+
+.address-checkbox {
+    appearance: none;
+
+    width: 15px;
+    height: 15px;
+
+    margin: 2px 20px 0 0;
+
+    border: 1px solid #555;
+
+    background-color: #fff;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+/* 체크되었을 때 */
+
+.address-checkbox:checked {
+    background-color: #666;
+
+    border-color: #666;
+
+    position: relative;
+}
+
+
+/* 체크 표시 */
+
+.address-checkbox:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 2px;
+    top: -2px;
+
+    font-size: 12px;
+
+    color: white;
+}
+
+
+/* ==========================================
+   주소 텍스트
+========================================== */
+
+.address-text {
+    padding: 0 20px 0 0;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color: #666;
+}
+
+
+/* ==========================================
+   주소 이름
+========================================== */
+
+.address-name {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 2px;
+
+    font-size: 12px;
+
+    color: #555;
+}
+
+
+/* ==========================================
+   기본 배송지 배지
+========================================== */
+
+.default-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    height: 20px;
+
+    padding: 0 6px;
+
+    box-sizing: border-box;
+
+    background-color: #8da8e8;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    line-height: 20px;
+
+    border-radius: 0;
+}
+
+
+/* ==========================================
+   주소
+========================================== */
+
+.address-main {
+    color: #666;
+
+    font-size: 12px;
+
+    word-break: keep-all;
+}
+
+
+/* ==========================================
+   이름 / 전화번호
+========================================== */
+
+.address-phone {
+    color: #666;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   수정 버튼
+========================================== */
+
+.address-edit-button {
+    width: 64px;
+    height: 32px;
+
+    margin-left: 20px;
+
+    background-color: #fff;
+
+    border: 1px solid #e5e5e5;
+
+    color: #666;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    /* 버튼 크기가 줄어들지 않도록 */
+    flex-shrink: 0;
+
+    /* 글자를 한 줄로 유지 */
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+.address-edit-button:hover {
+    border-color: #aaa;
+
+    color: #333;
+}
+
+
+/* ==========================================
+   배송지 등록 영역
+========================================== */
+
+.address-add-area {
+    width: 100%;
+
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #e5e5e5;
+
+    background-color: #faf9f7;
+}
+
+
+/* 등록 제목 */
+
+.address-add-area h3 {
+    margin: 0 0 25px;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: #555;
+}
+
+
+/* ==========================================
+   입력 행
+========================================== */
+
+.address-input-row {
+    display: flex;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+}
+
+
+/* 우편번호 */
+
+.address-input-row input {
+    width: 140px;
+    height: 40px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #ddd;
+
+    background-color: #fff;
+
+    font-size: 12px;
+
+    color: #666;
+
+    outline: none;
+}
+
+
+/* 주소 검색 버튼 */
+
+.address-input-row button {
+    width: 80px;
+    height: 40px;
+
+    margin-left: 6px;
+
+    border: 1px solid #ccc;
+
+    background-color: #fff;
+
+    color: #555;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+.address-input-row button:hover {
+    background-color: #f3f3f3;
+}
+
+
+/* ==========================================
+   주소 입력
+========================================== */
+
+.address-input {
+    width: 100%;
+    height: 40px;
+
+    margin-bottom: 10px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #ddd;
+
+    background-color: #fff;
+
+    color: #666;
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+
+.address-input:focus {
+    border-color: #aaa;
+}
+
+
+/* ==========================================
+   기본 배송지 체크
+========================================== */
+
+.default-address-check {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    color: #555;
+
+    cursor: pointer;
+}
+
+
+.default-address-check input {
+    appearance: none;
+
+    width: 14px;
+    height: 14px;
+
+    margin: 0;
+
+    border: 1px solid #aaa;
+
+    background-color: #fff;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+.default-address-check input:checked {
+    background-color: #666;
+
+    border-color: #666;
+
+    position: relative;
+}
+
+
+.default-address-check input:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 2px;
+    top: -3px;
+
+    color: #fff;
+
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   등록 버튼
+========================================== */
+
+.add-action-buttons {
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 20px;
+}
+
+
+.add-action-buttons button {
+    width: 75px;
+    height: 35px;
+
+    border: 1px solid #ddd;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+.save-button {
+    background-color: #666;
+
+    color: #fff;
+
+    border-color: #666 !important;
+}
+
+
+.save-button:hover {
+    background-color: #555;
+}
+
+
+.cancel-button {
+    background-color: #fff;
+
+    color: #666;
+}
+
+
+.cancel-button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* ==========================================
+   배송지 수정 영역
+========================================== */
+
+.address-edit-area {
+    width: 100%;
+
+    max-width: 700px;
+
+    padding: 25px 0;
+}
+
+
+/* 수정 제목 */
+
+.address-edit-title {
+    margin-bottom: 18px;
+
+    font-size: 13px;
+
+    color: #555;
+}
+
+
+/* ==========================================
+   수정 버튼 영역
+========================================== */
+
+.edit-action-buttons {
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 18px;
+}
+
+
+.edit-action-buttons button {
+    width: 65px;
+    height: 32px;
+
+    border: 1px solid #ddd;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   등록된 주소가 없을 때
+========================================== */
+
+.no-address {
+    padding: 70px 0;
+
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* ==========================================
+   하단 버튼 영역
+========================================== */
+
+.address-button-area {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 50px;
+}
+
+
+/* ==========================================
+   선택 주소록 삭제
+========================================== */
+
+.address-delete-button {
+    width: 135px !important;
+    min-width: 135px !important;
+    height: 40px !important;
+
+    /* ⭐ Flex 때문에 버튼이 줄어들지 않도록 */
+    flex-shrink: 0;
+
+    /* ⭐ 글자를 한 줄로 유지 */
+    white-space: nowrap;
+
+    /* ⭐ padding까지 포함해서 width 계산 */
+    box-sizing: border-box;
+
+    padding: 0 10px;
+
+    border: 1px solid #e5e5e5;
+
+    background-color: #fff;
+
+    color: #777;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+.address-delete-button:hover {
+    background-color: #f8f8f8;
+}
+
+
+/* ==========================================
+   배송지 등록
+========================================== */
+
+.address-add-button {
+    width: 135px;
+    min-width: 135px;
+    height: 40px;
+
+    /* ⭐ Flex 때문에 버튼이 줄어들지 않도록 */
+    flex-shrink: 0;
+
+    /* ⭐ 글자를 한 줄로 유지 */
+    white-space: nowrap;
+
+    /* ⭐ padding까지 포함해서 width 계산 */
+    box-sizing: border-box;
+
+    padding: 0 10px;
+
+    border: none;
+
+    background-color: #666;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+.address-add-button:hover {
+    background-color: #555;
+}
+
+
+/* ==========================================
+   반응형
+========================================== */
+
+@media (max-width: 768px) {
+
+    .address-container {
+        padding: 40px 20px 60px;
+    }
+
+
+    .address-title {
+        margin-bottom: 30px;
+    }
+
+
+    .address-item {
+        min-height: 100px;
+    }
+
+
+    .address-text {
+        padding-right: 10px;
+    }
+
+
+    .address-edit-button {
+        width: 55px;
+
+        margin-left: 10px;
+    }
+
+
+    .address-add-area {
+        padding: 20px;
+    }
+
+
+    /* ======================================
+       모바일 하단 버튼
+    ====================================== */
+
+    .address-button-area {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+
+    .address-delete-button,
+    .address-add-button {
+        width: 150px;
+        height: 40px;
+
+        padding: 0 10px;
+
+        box-sizing: border-box;
+
+        /* ⭐ 모바일에서도 버튼이 줄어들지 않게 */
+        flex-shrink: 0;
+
+        /* ⭐ 글자가 여러 줄로 내려가지 않게 */
+        white-space: nowrap;
+    }
+
+}

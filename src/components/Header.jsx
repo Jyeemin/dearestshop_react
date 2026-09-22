@@ -1,5 +1,5 @@
 import "./Header.css";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { 
     FiSearch,
     FiUser,
@@ -8,15 +8,35 @@ import {
     FiX
 } from "react-icons/fi";
 import {AuthContext} from "../context/AuthContext";
-import {useNavigate, Link} from "react-router-dom";
+import {useNavigate, Link, useLocation} from "react-router-dom";
+import api from "../axios/api";
 
 
 const Header = () => {
+    const [categories, setCategories] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState("");
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const inputRef = useRef(null);
     const {isLogin} = useContext(AuthContext);
     const nav = useNavigate();
+    const location = useLocation();
+
+
+    const getCategories = async() => {
+        try{
+            const response = await api.get(
+                "http://localhost:8080/api/products/category"
+            )
+
+            setCategories(response.data.data);
+        }catch(error){
+            console.error("카테고리 조회 실패", error);
+        }
+    }
+
+    useEffect(() => {
+        getCategories();
+    },[]);
 
 const handleSearch = (e) => {
 
@@ -25,8 +45,24 @@ const handleSearch = (e) => {
         if (searchKeyword.trim() === "") {
             return;
         }
+        const params = new URLSearchParams(location.search);
+        const categoryId = params.get("categoryId");
+        const sort = params.get("sort");
+        
+        let url = "/products?";
 
-        nav(`/products?keyword=${encodeURIComponent(searchKeyword)}`);
+        if (categoryId) {
+            url += `categoryId=${categoryId}&`;
+        }
+
+        url += `keyword=${encodeURIComponent(searchKeyword)}`;
+
+        if (sort) {
+            url += `&sort=${sort}`;
+        }
+
+        nav(url);
+        
         setSearchKeyword(""); // 검색 후 검색창 비우기
         setIsSearchOpen(false);
     }
@@ -44,19 +80,27 @@ const handleSearch = (e) => {
     <ul className="navbar-nav ml-auto">
 
          <li className="nav-item active"><Link className="nav-link" to="/">HOME</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/new">NEW ARRIVALS</Link></li>
-           <li className="nav-item"><Link className="nav-link" to="/best">BEST THINGS</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/products?sort=latest">NEW ARRIVALS</Link></li>
+           <li className="nav-item"><Link className="nav-link" to="/products?sort=sales">BEST THINGS</Link></li>
 
          <li className="nav-item dropdown">
            <Link className="nav-link" to="/products">SHOP ALL</Link>
                    <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/shop/tops">TOPS</Link></li>
-                        <li><Link className="dropdown-item" to="/shop/bottoms">BOTTOMS</Link></li>
-                        <li><Link className="dropdown-item" to="/shop/dresses">DRESSES</Link></li>
+                    {categories.map(category => (
+                        <li key={category.categoryId}>
+                            <Link
+                                className="dropdown-item"
+                                to={`/products?categoryId=${category.categoryId}`}
+                            >
+                                {category.categoryName}
+                            </Link>
+                        </li>
+                    ))}
+
                      </ul>
          </li>
                        
-                        <li className="nav-item"><Link className="nav-link" to="/contact">CONTACT</Link></li>
+                        
                     </ul>
             </nav>
 

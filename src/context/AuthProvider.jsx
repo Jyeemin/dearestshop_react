@@ -7,7 +7,14 @@ const AuthProvider = ({ children }) => {
         !!localStorage.getItem("accesstoken")
     );
 
-    const [member, setMember] = useState(null);
+    const [member, setMember] = useState(() => {
+        const memberName = localStorage.getItem("memberName");
+
+        if(!memberName){
+            return null;
+        }
+        return {memberName: memberName};
+    });
 
     return (
         <AuthContext.Provider

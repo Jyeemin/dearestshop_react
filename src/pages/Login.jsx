@@ -8,7 +8,7 @@ import "./Login.css";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { setIsLogin } = useContext(AuthContext);
+    const { setIsLogin, setMember } = useContext(AuthContext);
 
     
 
@@ -28,6 +28,15 @@ const Login = () => {
     const token = response.data.data.token;
     localStorage.setItem("accesstoken", token);
     localStorage.setItem("role",response.data.data.role);
+    localStorage.setItem(
+    "memberName",
+    response.data.data.memberName
+);
+    // 회원 정보 저장
+setMember({
+    memberName: response.data.data.memberName
+});
+
 
     console.log(response.data);
     console.log(response.data.data);

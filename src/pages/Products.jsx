@@ -13,6 +13,8 @@ const Products = () => {
     // 예: /products?keyword=ribbon
     // keyword → "ribbon"
     const keyword = searchParams.get("keyword");
+    const categoryId = searchParams.get("categoryId");
+    const sort = searchParams.get("sort");
 
     const { isLogin } = useContext(AuthContext);
 
@@ -75,7 +77,9 @@ const Products = () => {
                     "http://localhost:8080/api/products",
                     {
                         params: {
-                            keyword: keyword
+                            keyword: keyword || undefined,
+                            categoryId: categoryId || undefined,
+                            sort:sort || undefined
                         }
                     }
                 );
@@ -109,7 +113,7 @@ const Products = () => {
 
         getProducts();
 
-    }, [keyword]);
+    }, [keyword, categoryId, sort]);
 
 
     // --------------------------------

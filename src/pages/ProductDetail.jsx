@@ -211,6 +211,53 @@ const handleAddCart = async () => {
 
 };
 
+
+
+// =================================
+// 위시리스트 추가 / 삭제
+// =================================
+const handleWishlist = async () => {
+
+    // 로그인하지 않은 경우
+    if (!isLogin) {
+
+        alert("로그인 후 이용해주세요.");
+
+        navigate("/login");
+
+        return;
+    }
+
+    try {
+
+        // 위시리스트 추가 / 삭제
+        await api.post(
+            `http://localhost:8080/api/wishlist/${product.productId}`
+        );
+
+        // 화면의 isWishlist 변경
+        setProduct((prevProduct) => ({
+            ...prevProduct,
+            isWishlist: !prevProduct.isWishlist
+        }));
+
+    } catch (error) {
+
+        console.error(
+            "위시리스트 처리 실패:",
+            error
+        );
+
+        if (error.response) {
+
+            alert(error.response.data.message);
+
+        }
+
+    }
+
+};
+
     // =================================
     // 장바구니로 이동
     // =================================
@@ -283,9 +330,16 @@ const handleAddCart = async () => {
                         {product.productName}
                     </h1>
 
-                    <button className="detail-wishlist">
+                    <button className="detail-wishlist"
+                    onClick={handleWishlist}>
 
-                        <FiHeart />
+                        <FiHeart 
+                            fill={
+                                product.isWishlist
+                                ? "currentColor"
+                                : "none"
+                            }
+                        />
 
                     </button>
 
